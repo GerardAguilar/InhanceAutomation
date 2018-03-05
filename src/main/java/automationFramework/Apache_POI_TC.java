@@ -9,6 +9,7 @@ package automationFramework;
 	import org.openqa.selenium.firefox.FirefoxDriver;
 	import org.openqa.selenium.support.ui.WebDriverWait;
 	import org.testng.annotations.BeforeClass;
+	import org.testng.annotations.Test;
 	
 	import pageObjects.*;
 	import utility.Constant;
@@ -50,14 +51,36 @@ public class Apache_POI_TC {
 ////	    driver.manage().window().setSize(new Dimension(1024, 768))
 //	    wait = new WebDriverWait(driver, 20);
 	}
-	public static void main(String[] args) throws Exception{
-		ExcelUtils.setExcelFile(Constant.Path_TestData+Constant.File_TestData, "Sheet1");
+	
+	@Test
+	public void test() {
+		try {
+			ExcelUtils.setExcelFile(Constant.Path_TestData+Constant.File_TestData, "Sheet1");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+		}
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10,  TimeUnit.SECONDS);
 		driver.navigate().to(Constant.URL);
 		LoadPage_Action.Execute(driver);
 		System.out.println("Navigation successful");
 		driver.quit();
-		ExcelUtils.setCellData("Pass", 1,3);
+//		try {
+//			ExcelUtils.setCellData("Pass", 1,3);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
+//	public static void main(String[] args) throws Exception{
+//		ExcelUtils.setExcelFile(Constant.Path_TestData+Constant.File_TestData, "Sheet1");
+//		driver = new FirefoxDriver();
+//		driver.manage().timeouts().implicitlyWait(10,  TimeUnit.SECONDS);
+//		driver.navigate().to(Constant.URL);
+//		LoadPage_Action.Execute(driver);
+//		System.out.println("Navigation successful");
+//		driver.quit();
+//		ExcelUtils.setCellData("Pass", 1,3);
+//	}
 }
